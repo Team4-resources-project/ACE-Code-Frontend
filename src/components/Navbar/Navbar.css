@@ -1,0 +1,36 @@
+.navbar {
+  background-color: #A20025;
+}
+
+.navbar .dropdown-menu.full-width-dropdown {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 60px;
+  width: 100vw;
+  border-radius: 0;
+  padding: 1rem 0;
+  z-index: 1000;
+}
+
+.navbar .full-width-dropdown .dropdown-item {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar .full-width-dropdown .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 412px) {
+  .navbar .full-width-dropdown {
+    top: 50px;
+    flex-direction: column;
+  }
+
+  .navbar .full-width-dropdown .dropdown-item {
+    text-align: center;
+    width: 100%;
+  }
+}
