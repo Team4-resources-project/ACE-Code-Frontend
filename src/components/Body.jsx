@@ -1,6 +1,6 @@
-import "./Main.css";
+import "./Body.css";
 
-function Main() {
+function Body() {
   return (
     <div className="container">
       <div className="row align-items-center justify-content-center logo-slogan-container">
@@ -32,4 +32,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Body;

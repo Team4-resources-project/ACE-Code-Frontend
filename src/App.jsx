@@ -1,9 +1,9 @@
 import './App.css'
-import Main from './components/Main.jsx'
+import Body from './components/Body.jsx'
 
 function App() {
     return (
-        <Main />
+        <Body />
     )
 }
 
