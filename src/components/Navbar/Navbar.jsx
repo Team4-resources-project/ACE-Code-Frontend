@@ -13,7 +13,6 @@ const Navbar = () => {
           <i className="bi bi-house"></i>
         </a>
         <div className="navbar-nav me-auto">
-          {/* Botón para desplegar el dropdown */}
           <button
             className="btn btn-danger"
             type="button"
@@ -23,7 +22,6 @@ const Navbar = () => {
           >
             Recursos
           </button>
-          {/* Dropdown de Recursos */}
           <ul
             className="dropdown-menu dropdown-menu-dark full-width-dropdown"
             aria-labelledby="navbarDropdownRecursos"
