@@ -1,18 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
-  :root {
+:root {
     font-family: "Kanit", sans-serif;
     font-weight: 300;
     font-style: normal;
-    line-height: 1.5;
-  
-      --primary-color: rgb(162, 0, 37); /* Color primario */
-      --secondary-color: #333; /* Color secundario */
-      --border-radius: 8px; /* Radio de borde suave */
-      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra de caja suave */
-  }
-
-
-
-
-
+    line-height: 1.5; 
+}

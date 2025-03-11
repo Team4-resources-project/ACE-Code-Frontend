@@ -1,9 +1,59 @@
-.navbar {
-  background-color: #A20025;
+nav.navbar, .btn {
+  background-color: rgb(162, 0, 37);
+}
+
+.navbar .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.navbar .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbar .nav-link {
+  color: white;
+}
+
+.navbar .nav-link:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#navbarDropdownRecursos {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.d-flex.align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+  }
+  
+  .navbar .navbar-nav {
+    justify-content: flex-start;
+  }
+
+  .navbar .nav-link {
+    margin-right: 1rem;
+  }
+
+  .d-flex.align-items-center {
+    margin-left: auto;
+  }
 }
 
 .navbar .dropdown-menu.full-width-dropdown {
-  position: fixed;
+  position: fixed; 
   left: 0;
   right: 0;
   top: 60px;
