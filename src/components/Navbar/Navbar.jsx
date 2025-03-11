@@ -1,17 +1,20 @@
-// Navbar.js
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark w-100">
       <div className="container-fluid">
-        <a className="navbar-brand me-3" href="#">
+        <Link 
+        to="/" 
+        className="navbar-brand me-3" href="#">
           <i className="bi bi-house"></i>
-        </a>
+        </Link>
         <div className="navbar-nav me-auto">
           <button
             className="btn btn-danger"
@@ -28,9 +31,11 @@ const Navbar = () => {
           >
             <div className="d-flex flex-row justify-content-around w-100">
               <li>
-                <a className="dropdown-item" href="#">
+                <Link 
+                to="/documentation" 
+                className="dropdown-item" href="#">
                   Documentación
-                </a>
+                           </Link>
               </li>
               <li>
                 <a className="dropdown-item" href="#">

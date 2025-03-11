@@ -1,3 +1,0 @@
-function ResourcesSection(){
-    return 
-}
