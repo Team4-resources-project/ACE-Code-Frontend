@@ -1,6 +1,5 @@
 nav.navbar, .btn {
-  background-image: none !important;
-  background-color: rgb(162, 0, 37) !important;
+  background-color: rgb(162, 0, 37);
 }
 
 .navbar .container-fluid {
@@ -54,7 +53,7 @@ nav.navbar, .btn {
 }
 
 .navbar .dropdown-menu.full-width-dropdown {
-  position: absolute; 
+  position: fixed; 
   left: 0;
   right: 0;
   top: 60px;
