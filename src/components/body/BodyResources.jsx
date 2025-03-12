@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import ResourcesSection from '../ResourcesSection';
 
-export default function BodyResources({ resourcesType, fetchResources }) {
-    const [items, setItems] = useState([]);
-
+const BodyResources = ({ resourceTitle, onSelectResourceType }) => {
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await fetchResources();
-            setItems(data);
-        };
-        fetchData();
-    }, [fetchResources]);
+        const dropdown_items = document.querySelectorAll('.dropdown-item');
+        dropdown_items.forEach((dropdown_item) => {
+            dropdown_item.addEventListener('click', () => onSelectResourceType(dropdown_item.textContent));
+        });
+    }, [onSelectResourceType]);
 
     return (
-        <div className="flex flex-col justify-center items-center w-full">
-            <div className="justify-self-start self-start">
-                <h1 className="font-bold Graphik Medium text-white ml-8 text-2xl">{resourcesType}</h1>
-            </div>
-            {/* <div className="w-full p-7">
-                <ResourcesSection items={items} />
-            </div> */}
+        <div>
+            <h1>{resourceTitle}</h1>
         </div>
     );
-}
+};
+
+export default BodyResources;

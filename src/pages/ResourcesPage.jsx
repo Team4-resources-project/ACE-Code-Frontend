@@ -1,42 +1,29 @@
-import React, { useContext, useEffect } from 'react';
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from 'react';
+import resourcesList from '../services/resourcesconfig';
 import Navbar from '../components/navbar/Navbar';
+import BodyResources from '../components/body/BodyResources';
 import Footer from '../components/footer/Footer';
-import { BodyResourcesTypeContext } from '../App';
-import BodyResources from '../components/body/BodyResources.jsx';
-import resources from '../services/resourcesconfig.jsx';
 
-const ResourcesPage = ({ onOptionSelect }) => {
-    const selectedResource = useContext(BodyResourcesTypeContext);
+function ResourcesPage() {
+    const [selectedResource, setSelectedResource] = useState({ title: "", fetchFunction: null });
 
-    useEffect(() => {
-        const dropdown_items = document.querySelectorAll('.dropdown-item');
-        
-        dropdown_items.forEach((dropdown_item) => {
-            dropdown_item.addEventListener('click', () => onOptionSelect(dropdown_item.textContent));
-        });
+    const selectResourceType = (title) => {
+        const resource = resourcesList.find(resource => resource.title === title);
+        if (resource) {
+            setSelectedResource({ title: resource.title, fetchFunction: resource.fetchFunction });
+        }
+    };
 
-        return () => {
-            dropdown_items.forEach((dropdown_item) => {
-                dropdown_item.removeEventListener('click', () => onOptionSelect(dropdown_item.textContent));
-            });
-        };
-    }, [onOptionSelect]);
-
-    const resource = resources.find(resource => resource.title === selectedResource);
-
-    return(
-        <div>
+    return (
+        <>
             <Navbar />
-            {selectedResource && resource && (
-                <div id={resource.id}>
-                    <BodyResources resourcesType={resource.title} fetchResources={resource.fetchFunction} />
-                </div>
-            )}
+            <BodyResources
+                resourceTitle={selectedResource.title}
+                resourceFetchFunction={selectedResource.fetchFunction}
+                onSelectResourceType={selectResourceType}
+            />
             <Footer />
-        </div>
+        </>
     );
 }
 
