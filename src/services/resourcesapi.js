@@ -1,4 +1,4 @@
-const url = "localhost:8080/api/v1/resources";
+const url = "http://localhost:8080/api/v1/resources/upload/";
 
 async function getResourcesByCategory(category) {
   try {
