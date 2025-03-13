@@ -1,7 +1,7 @@
 import React from 'react';
-import DocumentationResource from './DocumentationResource';
-import TutorialResource from './TutorialResource';
-import ExerciseResource from './ExerciseResource';
+import DocumentationResource from '../resources/DocumentationResource';
+import TutorialResource from '../resources/TutorialResource';
+import ExerciseResource from '../resources/ExerciseResource';
 
 function ResourcesSection ({ items }) {
     return (
