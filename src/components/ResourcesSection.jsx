@@ -12,7 +12,7 @@ function ResourcesSection ({ items }) {
                         <div key={item.id}>
                             <DocumentationResource
                                 title={item.title}
-                                href={item.href}
+                                href={item.file_url}
                             />
                         </div>
                     );
@@ -21,7 +21,7 @@ function ResourcesSection ({ items }) {
                         <div key={item.id}>
                             <TutorialResource
                                 title={item.title}
-                                src={item.src}
+                                src={item.file_url}
                             />
                         </div>
                     );
@@ -30,7 +30,7 @@ function ResourcesSection ({ items }) {
                         <div key={item.id}>
                             <ExerciseResource
                                 title={item.title}
-                                src={item.src}
+                                src={item.file_url}
                             />
                         </div>
                     );
