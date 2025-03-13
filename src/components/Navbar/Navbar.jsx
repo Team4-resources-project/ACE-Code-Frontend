@@ -9,11 +9,14 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark w-100">
       <div className="container-fluid">
-        <a className="navbar-brand me-3" href="#">
+        <Link 
+        to="/" 
+        className="navbar-brand me-3" href="#">
           <i className="bi bi-house"></i>
-        </a>
+        </Link>
         <div className="navbar-nav me-auto">
-          <button
+          <Link
+            to="/resources"
             className="btn btn-danger"
             type="button"
             id="navbarDropdownRecursos"
@@ -21,7 +24,7 @@ const Navbar = () => {
             aria-expanded="false"
           >
             Recursos
-          </button>
+          </Link>
           <ul
             className="dropdown-menu dropdown-menu-dark full-width-dropdown"
             aria-labelledby="navbarDropdownRecursos"
