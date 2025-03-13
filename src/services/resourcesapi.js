@@ -1,63 +1,28 @@
-//
+const url = "localhost:8080/api/v1/resources";
 
-export async function getAllResources() {
-    /* try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-  
-      const resources = await response.json();
-      return resources;
-    } catch (error) {
-      console.error(error.message);
-    } */
-  }
-
-   /*export async function getDocumentation() {
-    try {
-      const response = await fetch(url+"tutorials");
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-  
-      const tutorials = await response.json();
-      console.log(tutorials);
-    } catch (error) {
-      console.error(error.message);
-    }
-  } */
-
-    export function getDocumentation() {
-      console.log("hola")
+async function getResourcesByCategory(category) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
     }
 
-
-  export async function getTutorials() {
-    /* try {
-      const response = await fetch(url+"tutorials");
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-  
-      const tutorials = await response.json();
-      console.log(tutorials);
-    } catch (error) {
-      console.error(error.message);
-    } */
+    const allResources = await response.json();
+    const filteredResources = allResources.filter((resource) => resource.category === category);
+    return filteredResources;
+  } catch (error) {
+    console.error(error.message);
   }
+}
 
-  export async function getExercises() {
-    /* try {
-      const response = await fetch(url+"exercises");
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-  
-      const exercises = await response.json();
-      console.log(exercises);
-    } catch (error) {
-      console.error(error.message);
-    } */
-  }
+export async function getDocumentation() {
+  return getResourcesByCategory("documentation");
+}
 
+export async function getTutorials() {
+  return getResourcesByCategory("tutorials");
+}
+
+export async function getExercises() {
+  return getResourcesByCategory("exercises");
+}

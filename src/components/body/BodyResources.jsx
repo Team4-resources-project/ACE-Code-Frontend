@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ResourcesSection from '../ResourcesSection';
 
-const BodyResources = ({ resourceTitle, resourceFetchFunction, onSelectResourceType }) => {
+const BodyResources = ({ resourceCategory, resourceFetchFunction, onSelectResourceType }) => {
     useEffect(() => {
         const dropdown_items = document.querySelectorAll('.dropdown-item');
         dropdown_items.forEach((dropdown_item) => {
@@ -23,7 +23,7 @@ const BodyResources = ({ resourceTitle, resourceFetchFunction, onSelectResourceT
     return (
         <>
             <div>
-                <h1>{resourceTitle}</h1>
+                <h1>{resourceCategory}</h1>
             </div>
             <div>
                 <ResourcesSection items={items} />

@@ -5,12 +5,12 @@ import BodyResources from '../components/body/BodyResources';
 import Footer from '../components/footer/Footer';
 
 function ResourcesPage() {
-    const [selectedResource, setSelectedResource] = useState({ title: "", fetchFunction: null });
+    const [selectedResource, setSelectedResource] = useState({ category: "", fetchFunction: null });
 
     const selectResourceType = (title) => {
-        const resource = resourcesList.find(resource => resource.title === title);
+        const resource = resourcesList.find(resource => resource.category === title);
         if (resource) {
-            setSelectedResource({ title: resource.title, fetchFunction: resource.fetchFunction });
+            setSelectedResource({ title: resource.category, fetchFunction: resource.fetchFunction });
         }
     };
 
@@ -18,7 +18,7 @@ function ResourcesPage() {
         <>
             <Navbar />
             <BodyResources
-                resourceTitle={selectedResource.title}
+                resourceCategory={selectedResource.category}
                 resourceFetchFunction={selectedResource.fetchFunction}
                 onSelectResourceType={selectResourceType}
             />

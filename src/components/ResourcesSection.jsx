@@ -7,7 +7,7 @@ function ResourcesSection ({ items }) {
     return (
         <>
             {items.map((item) => {
-                if (item.type === 'documentation') {
+                if (item.category === 'documentation') {
                     return (
                         <div key={item.id}>
                             <DocumentationResource
@@ -16,7 +16,7 @@ function ResourcesSection ({ items }) {
                             />
                         </div>
                     );
-                } else if (item.type === 'tutorial') {
+                } else if (item.category === 'tutorial') {
                     return (
                         <div key={item.id}>
                             <TutorialResource
@@ -25,7 +25,7 @@ function ResourcesSection ({ items }) {
                             />
                         </div>
                     );
-                } else if (item.type === 'exercise') {
+                } else if (item.category === 'exercise') {
                     return (
                         <div key={item.id}>
                             <ExerciseResource
