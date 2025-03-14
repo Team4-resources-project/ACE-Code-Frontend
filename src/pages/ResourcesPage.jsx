@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import resourcesList from '../services/resourcesconfig';
 import Navbar from '../components/navbar/Navbar';
 import BodyResources from '../components/body/BodyResources';
 import Footer from '../components/footer/Footer';
 
 function ResourcesPage() {
-    const [selectedResource, setSelectedResource] = useState({ category: "", fetchFunction: null });
+  const { category } = useParams(); 
+  const resource = resourcesList.find((res) => res.id === category);
 
-    const selectResourceType = (title) => {
-        const resource = resourcesList.find(resource => resource.category === title);
-        if (resource) {
-            setSelectedResource({ title: resource.category, fetchFunction: resource.fetchFunction });
-        }
-    };
-
-    return (
-        <>
-            <Navbar />
-            <BodyResources
-                resourceCategory={selectedResource.category}
-                resourceFetchFunction={selectedResource.fetchFunction}
-                onSelectResourceType={selectResourceType}
-            />
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Navbar />
+      <BodyResources
+        resourceCategory={resource?.category || "Recursos"}
+        resourceFetchFunction={resource?.fetchFunction}
+      />
+      <Footer />
+    </>
+  );
 }
 
 export default ResourcesPage;

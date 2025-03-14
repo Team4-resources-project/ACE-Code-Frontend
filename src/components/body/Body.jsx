@@ -30,16 +30,7 @@ function Body() {
         </div>
       </div>
       <div className="mt-4 text-container">
-        En esta emocionante travesía, nos enfocaremos en <strong>JAVA</strong>, uno de
-        los lenguajes de programación más influyentes y versátiles. Utilizado en
-        millones de dispositivos, desde aplicaciones móviles hasta sistemas
-        empresariales, JAVA es sinónimo de estabilidad y eficiencia.
-        <br /><br />
-        <strong>¿Por qué aprender JAVA?</strong> Porque es una habilidad invaluable que abrirá puertas en la industria tecnológica. JAVA te permite construir aplicaciones seguras y escalables, habilidades
-        altamente demandadas en el mercado laboral actual. Además, formarás parte de una comunidad global
-        de desarrolladores apasionados, listos para colaborar y compartir conocimientos.
-        <br /><br />
-        En CodeBoost Academy, creemos que cada línea de código es un paso hacia un futuro mejor. Con JAVA, tendrás las herramientas para innovar y crear soluciones que transformen el mundo. ¡Únete a nosotros y empieza a impulsar tu código hoy mismo!
+      En esta emocionante travesía, nos enfocaremos en <strong>JavaScript</strong>, uno de los lenguajes de programación más dinámicos y versátiles. Utilizado en millones de sitios web y aplicaciones, JavaScript es sinónimo de interactividad y modernidad. <br /><br /> <strong>¿Por qué aprender JavaScript?</strong> Porque es una habilidad invaluable que abrirá puertas en la industria tecnológica. JavaScript te permite construir aplicaciones web dinámicas y responsivas, habilidades altamente demandadas en el mercado laboral actual. Además, formarás parte de una comunidad global de desarrolladores apasionados, listos para colaborar y compartir conocimientos. <br /><br /> En CodeBoost Academy, creemos que cada línea de código es un paso hacia un futuro mejor. Con JavaScript, tendrás las herramientas para innovar y crear soluciones que transformen el mundo. ¡Únete a nosotros y empieza a impulsar tu código hoy mismo!
       </div>
     </div>
   );
