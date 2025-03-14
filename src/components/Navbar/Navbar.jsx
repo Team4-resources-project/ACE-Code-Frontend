@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Navbar.css";
+import resourcesList from '../../services/resourcesconfig';
 
 const Navbar = () => {
   return (
@@ -21,24 +22,19 @@ const Navbar = () => {
             aria-expanded="false"
           >
             Recursos
-            </button>
+          </button>
           <ul className="dropdown-menu dropdown-menu-dark full-width-dropdown">
             <div className="d-flex flex-row justify-content-around w-100">
-              <li>
-                <Link to="/resources/documentation" className="dropdown-item">
-                  Documentación
-                </Link>
-              </li>
-              <li>
-                <Link to="/resources/tutorials" className="dropdown-item">
-                  Tutoriales
-                </Link>
-              </li>
-              <li>
-                <Link to="/resources/exercises" className="dropdown-item">
-                  Ejercicios
-                </Link>
-              </li>
+              {resourcesList.map((resource) => (
+                <li key={resource.id}>
+                  <Link
+                    to={`/resources/${resource.id}`}
+                    className="dropdown-item"
+                  >
+                    {resource.category}
+                  </Link>
+                </li>
+              ))}
             </div>
           </ul>
         </div>
