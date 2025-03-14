@@ -17,13 +17,13 @@ function ResourcesSection({ items }) {
               <DocumentationResource title={item.title} href={item.fileUrl} />
             </div>
           );
-        } else if (item.category === 'tutorial') {
+        } else if (item.category === 'tutorials') {
           return (
             <div key={item.id}>
               <TutorialResource title={item.title} src={item.fileUrl} />
             </div>
           );
-        } else if (item.category === 'exercise') {
+        } else if (item.category === 'exercises') {
           return (
             <div key={item.id}>
               <ExerciseResource title={item.title} src={item.fileUrl} />

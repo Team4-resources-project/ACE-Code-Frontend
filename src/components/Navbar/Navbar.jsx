@@ -13,8 +13,7 @@ const Navbar = () => {
           <i className="bi bi-house"></i>
         </Link>
         <div className="navbar-nav me-auto">
-          <Link
-            to="/resources"
+          <button
             className="btn btn-danger"
             type="button"
             id="navbarDropdownRecursos"
@@ -22,7 +21,7 @@ const Navbar = () => {
             aria-expanded="false"
           >
             Recursos
-          </Link>
+            </button>
           <ul className="dropdown-menu dropdown-menu-dark full-width-dropdown">
             <div className="d-flex flex-row justify-content-around w-100">
               <li>
