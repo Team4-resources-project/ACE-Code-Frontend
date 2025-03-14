@@ -9,9 +9,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark w-100">
       <div className="container-fluid">
-        <Link 
-        to="/" 
-        className="navbar-brand me-3" href="#">
+        <Link to="/" className="navbar-brand me-3">
           <i className="bi bi-house"></i>
         </Link>
         <div className="navbar-nav me-auto">
@@ -25,25 +23,22 @@ const Navbar = () => {
           >
             Recursos
           </Link>
-          <ul
-            className="dropdown-menu dropdown-menu-dark full-width-dropdown"
-            aria-labelledby="navbarDropdownRecursos"
-          >
+          <ul className="dropdown-menu dropdown-menu-dark full-width-dropdown">
             <div className="d-flex flex-row justify-content-around w-100">
               <li>
-                <a className="dropdown-item" href="#">
+                <Link to="/resources/documentation" className="dropdown-item">
                   Documentación
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <Link to="/resources/tutorials" className="dropdown-item">
                   Tutoriales
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <Link to="/resources/exercises" className="dropdown-item">
                   Ejercicios
-                </a>
+                </Link>
               </li>
             </div>
           </ul>
@@ -56,11 +51,7 @@ const Navbar = () => {
           >
             <i className="bi bi-download"></i>
           </a>
-          <a
-            href="#"
-            className="nav-link mx-2 text-white"
-            aria-label="Perfil"
-          >
+          <a href="#" className="nav-link mx-2 text-white" aria-label="Perfil">
             <i className="bi bi-person-circle"></i>
           </a>
         </div>
