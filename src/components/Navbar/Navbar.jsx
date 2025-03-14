@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import resourcesList from '../../services/resourcesconfig';
+import "./Navbar.css";
 
 const Navbar = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(false);
