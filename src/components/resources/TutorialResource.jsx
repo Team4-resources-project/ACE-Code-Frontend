@@ -1,5 +1,6 @@
 function TutorialResource({ title, src }) {
     return (
+        <>
            <iframe
                 width="560"
                 height="315"
@@ -9,6 +10,8 @@ function TutorialResource({ title, src }) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
             ></iframe>
+            <i class="bi bi-trash"></i>
+            </>
     );
 }   
 

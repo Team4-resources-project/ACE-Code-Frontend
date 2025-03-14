@@ -32,6 +32,7 @@ function ResourcesSection({ items }) {
         }
         return null;
       })}
+      
     </>
   );
 }
