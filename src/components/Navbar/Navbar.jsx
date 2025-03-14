@@ -68,44 +68,36 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
+     <nav className="navbar navbar-expand-lg navbar-dark w-100">
       <div className="container-fluid">
-        <a className="navbar-brand me-3" href="#">
+        <Link to="/" className="navbar-brand me-3">
           <i className="bi bi-house"></i>
-        </a>
-
-        <button
-          className="btn btn-danger"
-          type="button"
-          id="navbarDropdownRecursos"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Recursos
-        </button>
-
-        <ul
-          className="dropdown-menu dropdown-menu-dark full-width-dropdown"
-          aria-labelledby="navbarDropdownRecursos"
-        >
-          <div className="d-flex flex-row justify-content-around w-100">
-            <li>
-              <a className="dropdown-item" href="#">
-                Documentación
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Tutoriales
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Ejercicios
-              </a>
-            </li>
-          </div>
-        </ul>
+        </Link>
+        <div className="navbar-nav me-auto">
+          <button
+            className="btn btn-danger"
+            type="button"
+            id="navbarDropdownRecursos"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Recursos
+          </button>
+          <ul className="dropdown-menu dropdown-menu-dark full-width-dropdown">
+            <div className="d-flex flex-row justify-content-around w-100">
+              {resourcesList.map((resource) => (
+                <li key={resource.id}>
+                  <Link
+                    to={`/resources/${resource.id}`}
+                    className="dropdown-item"
+                  >
+                    {resource.category}
+                  </Link>
+                </li>
+              ))}
+            </div>
+          </ul>
+        </div>
 
         <div className="ms-auto d-flex align-items-center">
           <a
