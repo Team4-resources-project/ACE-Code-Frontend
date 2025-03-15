@@ -1,18 +1,38 @@
-function TutorialResource({ title, src }) {
+import React from "react";
+
+function TutorialResource({src}) {
+    console.log("Renderizando TutorialResource");
+    const extractVideoId = (src) => {
+        const regex = /(?:youtu\.be\/|youtube\.com\/watch\?v=)([^&?/]+)/;
+        const match = src.match(regex);
+        return match ? match[1] : null;
+    };
+
+    const videoId = extractVideoId(src);
+
+    if (!videoId) {
+        return <p>URL de YouTube no válida</p>;
+    }
+
+    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
     return (
         <>
-           <iframe
-                width="560"
-                height="315"
-                src={src}
-                title={title}
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-            ></iframe>
-            <i class="bi bi-trash"></i>
-            </>
+            <a href={videoUrl} target="_blank" rel="noopener noreferrer" style={{ display: "block" }}>
+    <img
+        src={thumbnailUrl}
+        alt="miniatura"
+        style={{
+            width: "100%",
+            maxWidth: "640px",
+            height: "auto",
+            display: "block",
+            border: "2px solid blue", 
+        }}
+    />
+</a><i class="bi bi-trash"></i>
+        </>
     );
-}   
+}
 
 export default TutorialResource;

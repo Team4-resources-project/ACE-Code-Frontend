@@ -43,31 +43,28 @@ function UploadModal({ show, handleClose }) {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      // Validación: Al menos uno de los dos campos (file o fileUrl) debe estar presente
       if (!formData.file && !formData.fileUrl) {
         alert("Debes ingresar una URL o subir un archivo.");
         return;
       }
   
-      // Construir el objeto JSON para enviar
       const resourceData = {
         title: formData.title,
         category: formData.category,
-        fileUrl: formData.fileUrl || formData.file.name, // Usa la URL o el nombre del archivo
+        fileUrl: formData.fileUrl || formData.file.name, 
       };
   
       try {
-        const result = await postResource(resourceData); // Envía los datos al backend
+        const result = await postResource(resourceData); 
         console.log("Respuesta del backend:", result);
   
-        // Si la respuesta es texto, muestra un mensaje
         if (typeof result === "string") {
-          alert(result); // Por ejemplo: "Archivo subido exitosamente"
+          alert(result); 
         } else {
           alert("Recurso subido exitosamente");
         }
   
-        handleClose(); // Cierra el modal después de enviar
+        handleClose(); 
       } catch (error) {
         console.error("Error al subir el recurso:", error.message);
         alert("Ocurrió un error al subir el recurso. Por favor, inténtalo de nuevo.");
