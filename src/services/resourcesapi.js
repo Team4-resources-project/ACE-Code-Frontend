@@ -60,6 +60,7 @@ export async function postResource(data) {
   }
 }
 
+
 export async function putResource(id, updatedData) {
   try {
     const response = await fetch(`${API_URL}/${id}`, {
@@ -68,6 +69,21 @@ export async function putResource(id, updatedData) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedData),
+    });
+  } catch (error) {
+    console.error("Error al subir el recurso:", error.message);
+    throw error;
+  }
+}
+
+export async function deleteResource(id) {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      
     });
   } catch (error) {
     console.error("Error al subir el recurso:", error.message);

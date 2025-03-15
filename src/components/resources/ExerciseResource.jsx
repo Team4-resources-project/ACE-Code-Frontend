@@ -1,4 +1,5 @@
 import EditButton from "../buttons/EditButton";
+import DeleteButton from "../buttons/DeleteButton";
 import React, {useContext} from 'react';
 import { ItemContext } from '../ResourcesSection';
 
@@ -17,7 +18,7 @@ function ExerciseResource() {
             border: "2px solid blue", 
         }} />
         </div>
-        <div>{item.title}<EditButton /><i class="bi bi-trash"></i></div>
+        <div>{item.title}<EditButton /><DeleteButton /></div>
         </>
     );
 }
