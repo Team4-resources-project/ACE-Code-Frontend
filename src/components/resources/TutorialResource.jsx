@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useContext} from 'react';
+import { ItemContext } from '../ResourcesSection';
 
-function TutorialResource({src}) {
+function TutorialResource() {
+    const item = useContext(ItemContext);
+    const src = item.fileUrl;
+
     console.log("Renderizando TutorialResource");
     const extractVideoId = (src) => {
         const regex = /(?:youtu\.be\/|youtube\.com\/watch\?v=)([^&?/]+)/;

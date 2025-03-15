@@ -59,3 +59,18 @@ export async function postResource(data) {
     throw error;
   }
 }
+
+export async function putResource(id, updatedData) {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    });
+  } catch (error) {
+    console.error("Error al subir el recurso:", error.message);
+    throw error;
+  }
+}

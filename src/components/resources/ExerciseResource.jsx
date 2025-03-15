@@ -1,8 +1,14 @@
-function ExerciseResource({title, src}) {
+import EditButton from "../buttons/EditButton";
+import React, {useContext} from 'react';
+import { ItemContext } from '../ResourcesSection';
+
+function ExerciseResource() {
+    const item = useContext(ItemContext);
+    
     return (
         <>
         <div>
-        <img src={src} alt={title} 
+        <img src={item.fileUrl} alt={item.title} 
         style={{
             width: "100%",
             maxWidth: "100px",
@@ -11,7 +17,7 @@ function ExerciseResource({title, src}) {
             border: "2px solid blue", 
         }} />
         </div>
-        <div>{title}<i class="bi bi-pen"></i><i class="bi bi-trash"></i></div>
+        <div>{item.title}<EditButton /><i class="bi bi-trash"></i></div>
         </>
     );
 }

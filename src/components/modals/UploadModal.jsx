@@ -1,6 +1,6 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
-import { postResource } from "../services/resourcesapi";
+import { postResource } from "../../services/resourcesapi";
 
 function UploadModal({ show, handleClose }) {
   const [validated, setValidated] = useState(false);

@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import resourcesList from '../../services/resourcesconfig';
 import "./Navbar.css";
-import UploadModal from "../UploadModal";
+import UploadModal from "../modals/UploadModal";
 
 const Navbar = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(false);

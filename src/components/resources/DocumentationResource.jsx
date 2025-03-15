@@ -1,7 +1,13 @@
-function DocumentationResource({title, href}) {
+import React, {useContext} from 'react';
+import { ItemContext } from '../ResourcesSection';
+
+import EditButton from "../buttons/EditButton";
+function DocumentationResource() {
+    const item = useContext(ItemContext);
+    
     return (
         <>
-        <a href={href}>{title}</a><i class="bi bi-pen"></i><i class="bi bi-trash"></i>
+        <a href={item.fileUrl}>{item.title}</a><EditButton /><i class="bi bi-trash"></i>
         </>
     );
 }
