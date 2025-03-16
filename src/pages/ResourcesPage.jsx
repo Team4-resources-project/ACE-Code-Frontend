@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import resourcesList from '../services/resourcesconfig';
-import Navbar from '../components/navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import BodyResources from '../components/body/BodyResources';
 import Footer from '../components/footer/Footer';
 
@@ -13,8 +13,8 @@ function ResourcesPage() {
     <>
       <Navbar />
       <BodyResources
-        resourceCategory={resource?.category || "Recursos"}
-        resourceFetchFunction={resource?.fetchFunction}
+        resourceCategory={resource.category}
+        resourceFetchFunction={resource.fetchFunction}
       />
       <Footer />
     </>

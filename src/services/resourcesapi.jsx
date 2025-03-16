@@ -1,5 +1,25 @@
 export const API_URL = "http://localhost:8080/resources/upload/category";
 
+
+export const fetchWithAuth = async (url, options = {}, requireAuth = true) => {
+  let headers = { ...options.headers };
+
+  // Agregar el token solo si se requiere autenticación
+  if (requireAuth) {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      throw new Error("No hay token disponible. Por favor, inicia sesión.");
+    }
+    headers = {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
+  }
+  
+  return fetch(`${API_URL}${url}`, { ...options, headers });
+};
+
 export const ENDPOINTS = {
   documentation: `${API_URL}/documentation`,
   tutorials: `${API_URL}/tutorials`,
@@ -8,7 +28,7 @@ export const ENDPOINTS = {
 
 export async function getDocumentation() {
   try {
-    const response = await fetch(ENDPOINTS.documentation);
+    const response = await fetchWithAuth(ENDPOINTS.documentation);
     if (!response.ok) {
       throw new Error(`Error fetching documentation: ${response.status}`);
     }
@@ -21,7 +41,7 @@ export async function getDocumentation() {
 
 export async function getTutorials() {
   try {
-    const response = await fetch(ENDPOINTS.tutorials);
+    const response = await fetchWithAuth(ENDPOINTS.tutorials);
     if (!response.ok) {
       throw new Error(`Error fetching tutorials: ${response.status}`);
     }
@@ -34,7 +54,7 @@ export async function getTutorials() {
 
 export async function getExercises() {
   try {
-    const response = await fetch(ENDPOINTS.exercises);
+    const response = await fetchWithAuth(ENDPOINTS.exercises);
     if (!response.ok) {
       throw new Error(`Error fetching exercises: ${response.status}`);
     }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -12,6 +12,14 @@ const Navbar = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    window.location.href = "/";
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,7 +27,7 @@ const Navbar = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:8080/api/recourse/login", {
+      const response = await fetch("http://localhost:8080/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -32,9 +40,12 @@ const Navbar = () => {
       }
 
       localStorage.setItem("token", data.token);
-      window.location.reload();
+      setIsAuthenticated(true);
+      
+      navigate("/");
     } catch (err) {
       setError(err.message);
+    } finally {
       setLoading(false);
     }
   };
@@ -46,7 +57,7 @@ const Navbar = () => {
 
     try {
 
-      const response = await fetch("http://localhost:8080/api/recourse/register", {
+      const response = await fetch("http://localhost:8080/users/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -67,6 +78,18 @@ const Navbar = () => {
     }
   };
 
+  //abrir modal login, si usuario no esta registrado
+  const handleResourceClick = (e) => {
+    if (!isAuthenticated){
+      const loginmodel = new bootstrap.Modal(document.getElementById("loginModal"));
+      loginModal.show();
+    
+    } else{
+      window.location.href = "/resources";
+    }
+  };
+
+
   return (
      <nav className="navbar navbar-expand-lg navbar-dark w-100">
       <div className="container-fluid">
@@ -80,6 +103,7 @@ const Navbar = () => {
             id="navbarDropdownRecursos"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            onClick={handleResourceClick}
           >
             Recursos
           </button>
@@ -90,6 +114,7 @@ const Navbar = () => {
                   <Link
                     to={`/resources/${resource.id}`}
                     className="dropdown-item"
+                    onClick={handleResourceClick}
                   >
                     {resource.category}
                   </Link>
@@ -158,7 +183,6 @@ const Navbar = () => {
                     />
                   </div>
 
-                  {error && <div className="alert alert-danger">{error}</div>}
                 <div className="mb-3">
                   <label htmlFor="passwordInput" className="form-label">
                     Contraseña
@@ -191,6 +215,7 @@ const Navbar = () => {
                 type="submit"
                 className={`btn btn-${isRegisterMode ? "success" : "primary"}`}
                 disabled={loading}
+                onClick={isRegisterMode ? handleRegister : handleLogin}
               >
                 {loading ? "Cargando..." : isRegisterMode ? "Registrarse" : "Iniciar Sesión"}
               </button>
