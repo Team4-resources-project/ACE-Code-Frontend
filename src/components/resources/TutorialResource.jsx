@@ -1,15 +1,49 @@
-function TutorialResource({ title, src }) {
-    return (
-           <iframe
-                width="560"
-                height="315"
-                src={src}
-                title={title}
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-            ></iframe>
-    );
-}   
+import React, { useContext } from "react";
+import { ItemContext } from "../ResourcesSection";
+import DeleteButton from "../buttons/DeleteButton";
+
+function TutorialResource() {
+  const item = useContext(ItemContext);
+  const src = item.fileUrl;
+
+  console.log("Renderizando TutorialResource");
+  const extractVideoId = (src) => {
+    const regex = /(?:youtu\.be\/|youtube\.com\/watch\?v=)([^&?/]+)/;
+    const match = src.match(regex);
+    return match ? match[1] : null;
+  };
+
+  const videoId = extractVideoId(src);
+
+  if (!videoId) {
+    return <p>URL de YouTube no válida</p>;
+  }
+
+  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+  return (
+    <>
+      <a
+        href={videoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ display: "block" }}
+      >
+        <img
+          src={thumbnailUrl}
+          alt="miniatura"
+          style={{
+            width: "100%",
+            maxWidth: "640px",
+            height: "auto",
+            display: "block",
+            border: "2px solid blue",
+          }}
+        />
+      </a>
+      <DeleteButton />
+    </>
+  );
+}
 
 export default TutorialResource;

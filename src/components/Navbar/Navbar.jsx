@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import resourcesList from '../../services/resourcesconfig';
 import "./Navbar.css";
+import UploadModal from "../modals/UploadModal";
 
 const Navbar = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(false);
@@ -67,7 +68,13 @@ const Navbar = () => {
     }
   };
 
+  const [show, setShow] = useState(false);
+  
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
+    <>
      <nav className="navbar navbar-expand-lg navbar-dark w-100">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand me-3">
@@ -104,6 +111,7 @@ const Navbar = () => {
             href="#"
             className="nav-link mx-2 text-white"
             aria-label="Descargar"
+            onClick={handleShow}
           >
             <i className="bi bi-upload"></i>
           </a>
@@ -207,6 +215,8 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    <UploadModal show={show} handleClose={handleClose}/>
+    </>
   );
 };
 
