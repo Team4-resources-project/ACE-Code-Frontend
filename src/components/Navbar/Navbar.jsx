@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -13,63 +13,72 @@ const Navbar = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-
+    setSuccessMessage("");
+  
     try {
-      const response = await fetch("http://localhost:8080/api/recourse/login", {
+      const response = await fetch("http://localhost:8080/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-
-      const data = await response.json();
-
+  
       if (!response.ok) {
-        throw new Error(data.message || "Credenciales incorrectas");
+        // Leer el mensaje de error como texto
+        const errorMessage = await response.text();
+        throw new Error(errorMessage || "Usuario o contraseña incorrectos");
       }
-
-      localStorage.setItem("token", data.token);
-      window.location.reload();
+  
+      // Leer el mensaje de éxito como texto
+      const successMessage = await response.text();
+      setSuccessMessage(successMessage || "Inicio de sesión exitoso. Redirigiendo...");
+  
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (err) {
       setError(err.message);
+    } finally {
       setLoading(false);
     }
-  };
-
-  const handleRegister = async (e) => {
+  };const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-
+    setSuccessMessage("");
+  
     try {
-
-      const response = await fetch("http://localhost:8080/api/recourse/register", {
+      const response = await fetch("http://localhost:8080/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-
-      const data = await response.json();
-
+  
       if (!response.ok) {
-        throw new Error(data.message || "Error en el registro");
+        const errorMessage = await response.text();
+        throw new Error(errorMessage || "Error en el registro");
       }
-
-      alert("¡Registro exitoso!");
-      setIsRegisterMode(false);
+  
+      const successMessage = await response.text();
+      setSuccessMessage(successMessage || "¡Registro exitoso! Redirigiendo...");
+  
+      setTimeout(() => {
+        setIsRegisterMode(false);
+        setSuccessMessage("");
+      }, 2000);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-
   const [show, setShow] = useState(false);
-  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -129,7 +138,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className="modal fade"
+        className="modal fade loginModal"
         id="loginModal"
         tabIndex="-1"
         aria-labelledby="loginModalLabel"
@@ -166,7 +175,6 @@ const Navbar = () => {
                     />
                   </div>
 
-                  {error && <div className="alert alert-danger">{error}</div>}
                 <div className="mb-3">
                   <label htmlFor="passwordInput" className="form-label">
                     Contraseña
@@ -183,6 +191,9 @@ const Navbar = () => {
                 </div>
 
                 {error && <div className="alert alert-danger">{error}</div>}
+                  {successMessage && (
+                    <div className="alert alert-success">{successMessage}</div>
+                  )}
               </form>
             </div>
 
@@ -199,6 +210,7 @@ const Navbar = () => {
                 type="submit"
                 className={`btn btn-${isRegisterMode ? "success" : "primary"}`}
                 disabled={loading}
+                onClick={isRegisterMode ? handleRegister : handleLogin}
               >
                 {loading ? "Cargando..." : isRegisterMode ? "Registrarse" : "Iniciar Sesión"}
               </button>
