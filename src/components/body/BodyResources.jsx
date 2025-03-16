@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ResourcesSection from '../ResourcesSection';
 
-const BodyResources = ({ resourceCategory, resourceFetchFunction }) => {
+const BodyResources = ({ resourceCategory, resourceFetchFunction, isDropdownOpen }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -15,14 +15,16 @@ const BodyResources = ({ resourceCategory, resourceFetchFunction }) => {
   }, [resourceFetchFunction]);
 
   return (
-    <>
+     <div className="container mt-30" style={{
+          marginTop: isDropdownOpen ? "80px" : "0",
+        }}>
       <div>
         <h1>{resourceCategory}</h1>
       </div>
       <div>
         <ResourcesSection items={items} />
       </div>
-    </>
+    </div>
   );
 };
 

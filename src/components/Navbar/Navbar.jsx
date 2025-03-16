@@ -7,7 +7,7 @@ import resourcesList from '../../services/resourcesconfig';
 import "./Navbar.css";
 import UploadModal from "../modals/UploadModal";
 
-const Navbar = () => {
+const Navbar = ({ isDropdownOpen, setIsDropdownOpen }) => {
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -90,13 +90,14 @@ const Navbar = () => {
           <i className="bi bi-house"></i>
         </Link>
         <div className="navbar-nav me-auto">
-          <button
-            className="btn btn-danger"
-            type="button"
-            id="navbarDropdownRecursos"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+        <button
+              className="btn btn-danger"
+              type="button"
+              id="navbarDropdownRecursos"
+              data-bs-toggle="dropdown"
+              aria-expanded={isDropdownOpen}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
             Recursos
           </button>
           <ul className="dropdown-menu dropdown-menu-dark full-width-dropdown">
@@ -106,6 +107,7 @@ const Navbar = () => {
                   <Link
                     to={`/resources/${resource.id}`}
                     className="dropdown-item"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   >
                     {resource.category}
                   </Link>
@@ -119,7 +121,7 @@ const Navbar = () => {
           <a
             href="#"
             className="nav-link mx-2 text-white"
-            aria-label="Descargar"
+            aria-label="Subir"
             onClick={handleShow}
           >
             <i className="bi bi-upload"></i>
