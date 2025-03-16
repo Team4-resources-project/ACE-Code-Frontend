@@ -98,6 +98,7 @@ const Navbar = ({ isDropdownOpen, setIsDropdownOpen }) => {
                   <Link
                     to={`/resources/${resource.id}`}
                     className="dropdown-item"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   >
                     {resource.category}
                   </Link>
