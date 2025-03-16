@@ -6,7 +6,7 @@ import BodyResources from '../components/body/BodyResources';
 import Footer from '../components/footer/Footer';
 
 function ResourcesPage() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(true);
 
   const { category } = useParams(); 
   const resource = resourcesList.find((res) => res.id === category);
