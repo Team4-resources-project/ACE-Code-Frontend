@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { deleteResource } from "../../services/resourcesapi";   
 import { ItemContext } from "../ResourcesSection";
+import Button from 'react-bootstrap/Button';
 
 function DeleteButton() {
     const item = useContext(ItemContext);
@@ -20,9 +21,9 @@ function DeleteButton() {
 
   return (
     <>
-      <button onClick={handleDelete}>
+      <Button variant="outline-light" size="sm" onClick={handleDelete}>
         <i class="bi bi-trash"></i>
-      </button>
+      </Button>
     </>
   );
 }
