@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ItemContext } from "../ResourcesSection";
 import DeleteButton from "../buttons/DeleteButton";
+import Card from "react-bootstrap/Card";
 
 function TutorialResource() {
   const item = useContext(ItemContext);
@@ -22,27 +23,15 @@ function TutorialResource() {
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
   return (
-    <>
-      <a
-        href={videoUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ display: "block" }}
-      >
-        <img
-          src={thumbnailUrl}
-          alt="miniatura"
-          style={{
-            width: "100%",
-            maxWidth: "640px",
-            height: "auto",
-            display: "block",
-            border: "2px solid blue",
-          }}
-        />
-      </a>
-      <DeleteButton />
-    </>
+     <Card>
+      <Card.Link href={videoUrl}>
+      <Card.Img variant="top" src={thumbnailUrl} alt={item.title} />
+      </Card.Link>
+      <Card.Body>
+        <DeleteButton />
+      </Card.Body>
+    </Card>
+      
   );
 }
 
