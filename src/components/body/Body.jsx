@@ -2,9 +2,11 @@ import React from "react";
 import "./Body.css";
 import logo from '../../assets/logo.png'; 
 
-function Body() {
+function Body({ isDropdownOpen }) {
   return (
-    <div className="container mt-30">
+    <div className="container mt-30" style={{
+      marginTop: isDropdownOpen ? "60px" : "0",
+    }}>
       <div className="logo-slogan-container mb-4">
         <div className="logo-container">
           <div className="logo">
