@@ -1,0 +1,35 @@
+.footer-container {
+    background-color:rgb(162, 0, 37);
+    color: white;
+    width: 100vw;
+    padding: 0;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem;  
+    border-top: 1px solid white;
+  }
+  
+  .footer-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .footer-left .footer-logo {
+    margin-right: 1rem; 
+  }
+  
+  .footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .footer-right a, 
+.footer-right a:hover {
+  color: white !important;
+}
