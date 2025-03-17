@@ -14,7 +14,7 @@ function Footer() {
               <use xlinkHref="#bootstrap"></use>
             </svg>
           </a>
-          <span>© 2025 Company, Inc</span>
+          <span>© 2025 ACE-Code</span>
         </div>
         <div className="footer-right">
           <a
