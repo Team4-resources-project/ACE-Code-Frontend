@@ -30,12 +30,10 @@ const Navbar = ({ isDropdownOpen, setIsDropdownOpen }) => {
       });
   
       if (!response.ok) {
-        // Leer el mensaje de error como texto
         const errorMessage = await response.text();
         throw new Error(errorMessage || "Usuario o contraseña incorrectos");
       }
   
-      // Leer el mensaje de éxito como texto
       const successMessage = await response.text();
       setSuccessMessage(successMessage || "Inicio de sesión exitoso. Redirigiendo...");
   
@@ -47,7 +45,8 @@ const Navbar = ({ isDropdownOpen, setIsDropdownOpen }) => {
     } finally {
       setLoading(false);
     }
-  };const handleRegister = async (e) => {
+  };
+  const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
